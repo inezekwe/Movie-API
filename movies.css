@@ -1,0 +1,38 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: red;
+  }
+  h1 {
+    color: WHITE;
+    text-align: center;
+  }
+  p {
+    font-family: verdana;
+   
+  }
+
+  #singlemovie {
+      background-color: black;
+      color: white;
+      margin-bottom: 50px;
+      border-radius: .25rem;
+      
+  }
+  
+  .col-sm-4 {
+      margin-bottom: 50px;
+  }
+  
+  .card {
+      background-color: black;
+      color: white;
+      border: solid black 3px; 
+  }
+  .moviebtn {
+      background-color: red;
+      border: red;
+      margin-top: 10px;
+  }

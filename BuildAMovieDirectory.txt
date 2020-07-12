@@ -1,0 +1,90 @@
+﻿Build A Movie Directory
+
+
+In this class we are going to build a movie directory. The directory will show a list of movies. When a user clicks on a movie, that movie should be highlighted in its own section on the page. Follow the instructions as such:
+
+
+1. Register For An API Key
+
+
+Some API’s require keys. To access this API, you will need a key. Start by registering for a key here: http://www.omdbapi.com/apikey.aspx
+
+When you get your key, activate it in the email!
+
+
+2. Using They Key
+
+
+Now that you have your key, you can use it to query the API. Your key can be used as such:
+
+
+http://www.omdbapi.com/?apikey=[key]
+
+
+Replace the [key] tag with your key. To see an example of database returned, use the following:
+
+
+http://www.omdbapi.com/?apikey=[key]&s=love
+
+
+This will return all the movies with the title love.
+
+
+3. Explore The API
+
+
+Now that you have your first title being returned, continue to explore the API. Start looking at the parameters here: http://www.omdbapi.com/
+
+
+Change out ‘love’ with ‘wolf’, notice something different? The api is manulitable by changing the parameters.
+
+
+4. Create A List Of Movies
+
+
+Now that we are returning a list of movies in json format, output the movies in a list. When the list is outputted in html, it should have:
+* Title
+* Year Release
+* Poster
+* Button
+
+
+This will require you to iterate through the data returned from the API.
+
+
+5. Show A Single Movie
+
+
+When the button is clicked, it should show a single movie on the page. Use the imdbID to fetch a single movie. For example:
+
+
+http://www.omdbapi.com/?apikey=7a5d6ba4&i=tt1638002
+
+
+This returns a single movie. When the movie is clicked, output the following information in its own div:
+* Title
+* Rating
+* Image
+* Plot Director
+* Year released
+* Any other information
+
+
+6. Implement The Search
+
+
+Implement a search box. The search box should:
+1. Accept a user text. The text will be the title of the movie
+2. A button. When the button is clicked, it should take the content from the search text
+3. The text should be passed to the API and return results
+4. The results should be displayed in the list
+
+
+Bonus:
+* Style the page to make it look nice
+* Have the user be able to select multiple filter options in the search such as year and type (episode, movie, series)
+* On the single movie view you create, print out all the meta information (rating score, etc)
+
+
+Super Bonus
+* Implement the pagination/results from different pages. If you notice in the search results, there is a pages option.
