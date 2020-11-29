@@ -222,7 +222,6 @@ function pgUp() {
         let page = parseInt(pgNum.innerHTML) + 1;
 
         let result = doPageSearch(page);
-        console.log(result);
         
         if(result) {
             pgNum.innerHTML = page
