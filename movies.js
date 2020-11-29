@@ -9,6 +9,18 @@
 
     var search = null;
 
+    var page = null;
+
+    var searchButton = null;
+
+    var pgNum = null;
+
+    var pageNav = null;
+
+    var pgSkipNum = null;
+    
+    var pgSkipBtn = null;
+
 //When page loads, assign values to variables and add event listener to search bar
     $( document ).ready(function() {
             
@@ -20,9 +32,20 @@
 
         search = document.getElementById("search");
 
+        pgNum = document.getElementById("pgNum");
+
+        pageNav = document.getElementById("pageNav");
+
+        pgSkipNum = document.getElementById("pgSkipNum");
+
+        pgSkipBtn = document.getElementById("pgSkipBtn");
+
+        searchButton = document.getElementById("searchButton");
 
         search.addEventListener("search", doSearch); 
-                
+        searchButton.addEventListener("click", doSearch);
+        pgSkipBtn.addEventListener("click", pageSkip);
+
     })
 
 //Creates the indiv movie displayed at top when "More Info" button is clicked
@@ -100,7 +123,7 @@
         $.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movieid}`, function(data) {
 
 
-            console.log(data);
+            //console.log(data);
             var singleElement = createSingleMovie(data);;
             singlemovie.innerHTML = singleElement;
                                             
@@ -133,6 +156,8 @@
 //Searches for movie or tv based on value from search input
  function doSearch(event) {
 
+    event.preventDefault();
+
     var s = search.value;
                     
     $.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${s}`, function(data) {
@@ -146,16 +171,98 @@
                 var movie = createListingItem(data.Search[i]);
                                 
                 movielist.appendChild(movie);
-            }  
+            }
+
+            pgNum.innerHTML = 1;
+            pageNav.style.display = "block";
 
         }
         else {
             alert("Please type in a search term");
         }
                     
-                        
+        //console.log(data);             
+    });
+}
+
+//Searches for movie or tv based on value from search input and page number
+function doPageSearch(p) {
+
+    var s = search.value;
+    var response = true;
+    
+                    
+    $.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${s}&page=${p}`, function(data) {
+
+        if(data.Response == "True") {
+
+            movielist.innerHTML = "";
+
+            for(var i = 0; i < data.Search.length; i++) {
+                            
+                var movie = createListingItem(data.Search[i]);
+                                
+                movielist.appendChild(movie);
+            }
+
+        }
+        else {
+            alert("Please type in a search term");
+            response = false;
+        }
+         
     });
 
+    return response; 
+}
+
+//Next page in search results
+function pgUp() {
+    if(search.value) {
+        let page = parseInt(pgNum.innerHTML) + 1;
+
+        let result = doPageSearch(page);
+        console.log(result);
+        
+        if(result) {
+            pgNum.innerHTML = page
+        }
+
+    }
+    else {
+        alert("Please type in a search term");
+    }
+
+}
+
+//Previous page in search results
+function pgDown() {
+    if(search.value && parseInt(pgNum.innerHTML) > 1) {
+        let page = parseInt(pgNum.innerHTML) - 1;
+
+        let result = doPageSearch(page);
+        
+        if(result)
+            pgNum.innerHTML = page;
+    }
+    else {
+        alert("Please type in a search term");
+    }
+}
+
+function pageSkip(event) {
+    
+    event.preventDefault();
+    
+    let page = pgSkipNum.value;
+
+    if(page) {
+        let result = doPageSearch(page);
+        if(result)
+            pgNum.innerHTML = page;
+    }
+
+    
 }
 
           

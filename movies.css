@@ -1,17 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
     background-color: red;
+    font-family: 'Roboto', sans-serif;
   }
   h1 {
     color: WHITE;
     text-align: center;
-  }
-  p {
-    font-family: verdana;
-   
   }
 
   #singlemovie {
@@ -35,4 +34,17 @@ body {
       background-color: red;
       border: red;
       margin-top: 10px;
+  }
+
+  #pageNav {
+      display: none;
+  }
+
+  .hide {
+      display: none;
+  }
+
+  #modalBtn {
+      padding: 0;
+      border: 0;
   }
