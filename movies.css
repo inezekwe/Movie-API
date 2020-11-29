@@ -39,12 +39,3 @@ body {
   #pageNav {
       display: none;
   }
-
-  .hide {
-      display: none;
-  }
-
-  #modalBtn {
-      padding: 0;
-      border: 0;
-  }

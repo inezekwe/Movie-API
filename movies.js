@@ -17,8 +17,12 @@
 
     var pageNav = null;
 
+    var pgDownBtn = null;
+
+    var pgUpBtn = null;
+
     var pgSkipNum = null;
-    
+
     var pgSkipBtn = null;
 
 //When page loads, assign values to variables and add event listener to search bar
@@ -36,6 +40,10 @@
 
         pageNav = document.getElementById("pageNav");
 
+        pgDownBtn = document.getElementById("pgDownBtn");
+
+        pgUpBtn = document.getElementById("pgUpBtn");
+
         pgSkipNum = document.getElementById("pgSkipNum");
 
         pgSkipBtn = document.getElementById("pgSkipBtn");
@@ -44,6 +52,8 @@
 
         search.addEventListener("search", doSearch); 
         searchButton.addEventListener("click", doSearch);
+        pgDownBtn.addEventListener("click", pgDown);
+        pgUpBtn.addEventListener("click", pgUp);
         pgSkipBtn.addEventListener("click", pageSkip);
 
     })
@@ -122,8 +132,6 @@
 
         $.get(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movieid}`, function(data) {
 
-
-            //console.log(data);
             var singleElement = createSingleMovie(data);;
             singlemovie.innerHTML = singleElement;
                                             
@@ -180,8 +188,7 @@
         else {
             alert("Please type in a search term");
         }
-                    
-        //console.log(data);             
+            
     });
 }
 
