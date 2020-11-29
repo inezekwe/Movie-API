@@ -120,7 +120,7 @@
 
         var movieid = this.id;
 
-        $.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movieid}`, function(data) {
+        $.get(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movieid}`, function(data) {
 
 
             //console.log(data);
@@ -160,7 +160,7 @@
 
     var s = search.value;
                     
-    $.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${s}`, function(data) {
+    $.get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${s}`, function(data) {
 
         if(data.Response == "True") {
 
@@ -192,7 +192,7 @@ function doPageSearch(p) {
     var response = true;
     
                     
-    $.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${s}&page=${p}`, function(data) {
+    $.get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${s}&page=${p}`, function(data) {
 
         if(data.Response == "True") {
 
